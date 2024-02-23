@@ -1,58 +1,92 @@
-body, html {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+body,
+html {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("BackgroundPic.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .container {
-    text-align: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"] {
-    width: calc(100% - 20px); /* Full width minus padding */
+.header-container {
+    display: flex; 
+    align-items: center;
+    gap: 20px; 
+}
+
+.header-image {
+    width: 100px; 
+    height: auto; 
+}
+
+
+input[type="name"] {  
     height: 50px; /* Comfortable height for input */
     padding: 10px; /* Spacious padding for text */
     margin-top: 20px; /* Space from elements above */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     border: 1px solid #ccc; /* Subtle border */
-    border-radius: 25px; /* Rounded corners */
+    border-radius: 25px;
     font-size: 16px; /* Readable text size */
     background-color: #fff; /* White background */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Slight shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
     outline: none; /* Removes the default focus outline */
+  }
+
+input[type="name"]:focus {
+    border-color: #4a90e2; /* Highlighted border color when focused */
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5); /* Glow effect on focus */
+  }
+
+textarea {
+    width: calc(100% - 20px);
+    height: 200px;
+    padding: 10px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    resize: none;
+
 }
 
-input[type="text"]:focus {
-    border-color: #4A90E2; /* Highlighted border color when focused */
-    box-shadow: 0 0 0 2px rgba(74,144,226,0.5); /* Glow effect on focus */
+textarea [type="text"]:focus {
+  border-color: #4a90e2; 
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5); 
 }
-
 
 button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 #nicknameOutput {
-    margin-top: 20px;
-    font-size: 20px;
-    color: #333;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
 }
