@@ -8,11 +8,17 @@
 </head>
 <body>
     <div class="container">
-        <h1>프로메테우스 닉네임 생성기</h1>
-        <input type="text" id="inputText" placeholder="문장을 입력하세요..">
+        <div class="header-container">
+            <img src="webTitle.png" alt="Image Description" class="header-image">
+            <h1>프로메테우스 닉네임 생성기</h1>
+        </div>
+        <input type="name" id="inputName" placeholder="이름을 입력하시오.">
+        <textarea type="text" id="inputText" placeholder="문장을 입력하시오."></textarea>
+        <br /><span style="color:#aaa;" id="counter">(0 / 최대 100자)</span><br />
         <button id="generateButton">닉네임 생성하기!</button>
         <div id="nicknameOutput"></div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
