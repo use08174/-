@@ -5,7 +5,7 @@ def makeNickName(nounArr,adjective,name):
             nickName+=nounArr[i]
             nickName+=" "
     if(adjective):
-        nickName+=adjective
+        nickName+=adjective[0]
         nickName+=" "
         for j in range(len(nounArr)):
             nickName+=nounArr[j]
