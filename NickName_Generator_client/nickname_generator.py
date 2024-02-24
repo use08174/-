@@ -2,13 +2,13 @@ import fasttext
 import numpy as np
 import pandas as pd 
 from konlpy.tag import Okt
+import sys
 import re
 import random
-from util import load_csv_dataset
 from age_random import random_age_word
 
 # Load the FastText model
-model = fasttext.load_model('/Users/suminss/github/name_generator_project/cc.ko.300.bin')
+model = fasttext.load_model('cc.ko.300.bin')
 
 def find_most_similar(word, words, model):
     word_vec = model.get_word_vector(word)
@@ -235,19 +235,14 @@ def generate_words(keywords, dataset) :
 
 
 
-if __name__ == "__main__":
-    sentence_1 = "안녕하세요! 저는 김지은이고 26살입니다. 서울에서 태어나고 자랐으며, 현재는 웹 개발자로 일하고 있어요. 코딩과 새로운 기술을 배우는 것을 정말 좋아하고, 여가 시간에는 사진 찍기와 여행을 즐깁니다. 또한, 자연을 사랑해서 자주 등산을 가요. 앞으로 다양한 프로젝트에 참여하며 경험을 쌓아가고 싶어요."
-    sentence_2 = "내 이름은 심수민이고, 대학생이야. 프로메테우스라는 인공지능 동아리에서 개발부 부장을 맡고 있어. 서울에서 살고 있어. mbti는 istj 이고, 사람들을 좋아하지만 때론 낯을 가리는 것 같아. 코딩 학원에서 학생들을 가르치고 있고, 평소에는 그냥 누워서 핸드폰하는 것을 좋아해."
-    sentence_3 = "안녕"
-    name = "철수"
-
+def generate_nickname(sentence, name):
     # 1. load dataset
     file_path = './assets/category.xlsx' 
     df = pd.read_excel(file_path, engine='openpyxl')
 
     # 2. keyword 추출
-    keywords = extract_keywords(sentence_2)
-    # + keyword에서 이름 삭제
+    keywords = extract_keywords(sentence)
+    # + keyword에서 이름 삭제       
     # + 이야기에서 나이, 거주지, mbti가 있는지 체크해서 있다면 keyword에 넣기
     
     # 3. generate keywords
@@ -266,8 +261,18 @@ if __name__ == "__main__":
             adjectivelist.append(word)
         
     nickname = makeNickName(nounlist, adjectivelist, name)
-    print(nickname)
+    
 
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <sentence> <name>", file=sys.stderr)
+        sys.exit(1)
+    
+    sentence = sys.argv[1]
+    name = sys.argv[2]
+    
+    generate_nickname(sentence, name)
 
 
 
