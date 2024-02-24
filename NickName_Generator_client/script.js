@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
           return response.json();
         })
         .then((data) => {
+
+          console.log('결과:' , data);
           document.getElementById("nicknameOutput").innerText = data.nickname;
         })
         .catch((error) => {

@@ -35,7 +35,7 @@ def keyword_by_similarity(keywords, dataset,):
         # 유사도가 0.4 이상인 경우에만 결과 저장
         if max_similarity >= 0.4:
             similarity.append((word, most_similar_word))
-        print(f"{word}은/는 {most_similar_word}와 {max_similarity} 만큼 유사합니다.")
+        #print(f"{word}은/는 {most_similar_word}와 {max_similarity} 만큼 유사합니다.")
     
     for word, most_similar_word in similarity:
         filtered_dataset = dataset[dataset['단어'] == most_similar_word]
@@ -164,13 +164,13 @@ def count_noun_adj(word_list):
 
 # 생성 메인 코드 
 def generate_words(keywords, dataset) :
-    print("extracted keywords", keywords)
+    #print("extracted keywords", keywords)
     
     generated_keyword_count = 0
     generated_result = []
     # age 생성
     age_word = random_age_word(keywords, dataset)
-    print(age_word)
+    #print(age_word)
     
     # mbti 생성
     mbti_word = random_mbti_word(keywords, dataset)
@@ -194,7 +194,7 @@ def generate_words(keywords, dataset) :
     
     # 중복 제거
     generated_result = list(set(generated_result))
-    print("추출된 키워드 바탕으로 생성된 단어들", generated_result)
+    #print("추출된 키워드 바탕으로 생성된 단어들", generated_result)
     
     # 랜덤 생성으로 개수 맞추기
     count_noun, count_adj = count_noun_adj(generated_result)
@@ -239,7 +239,7 @@ def generate_nickname(sentence, name):
     # 1. load dataset
     file_path = './assets/category.xlsx' 
     df = pd.read_excel(file_path, engine='openpyxl')
-
+   
     # 2. keyword 추출
     keywords = extract_keywords(sentence)
     # + keyword에서 이름 삭제       
@@ -259,9 +259,9 @@ def generate_nickname(sentence, name):
             nounlist.append(word)
         elif pos == '관형사':
             adjectivelist.append(word)
-        
-    nickname = makeNickName(nounlist, adjectivelist, name)
     
+    nickname = makeNickName(nounlist, adjectivelist, name)
+    return nickname
 
 
 if __name__ == "__main__":
@@ -269,10 +269,10 @@ if __name__ == "__main__":
         print("Usage: python script.py <sentence> <name>", file=sys.stderr)
         sys.exit(1)
     
-    sentence = sys.argv[1]
-    name = sys.argv[2]
+    sentence = sys.argv[2]
+    name = sys.argv[1]
     
-    generate_nickname(sentence, name)
+    print(generate_nickname(sentence, name), end='')
 
 
 
