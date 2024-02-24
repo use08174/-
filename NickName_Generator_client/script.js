@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const inputName = document.getElementById("inputName").value;
       const inputText = document.getElementById("inputText").value;
 
+      const button = this;
+      const originalButtonText = button.innerText;
+      button.disabled = true;
+      button.innerText = "생성 중...";
+
       // API 호출
       fetch("/", {
         method: "POST",
@@ -21,14 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
           return response.json();
         })
         .then((data) => {
-
-          console.log('결과:' , data);
+          console.log("결과:", data);
           document.getElementById("nicknameOutput").innerText = data.nickname;
         })
         .catch((error) => {
           console.error("오류:", error);
           document.getElementById("nicknameOutput").innerText =
             "오류 발생! 다시 시도하시오.";
+        })
+        .finally(() => {
+          button.innerText = originalButtonText; // Revert button text to original
+          button.disabled = false; // Re-enable button
         });
     });
 
